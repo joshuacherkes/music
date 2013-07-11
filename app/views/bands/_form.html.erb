@@ -1,0 +1,19 @@
+<% action_url = (method == :post) ? bands_path : band_path(band) %>
+
+<form action="<%= action_url %>" method="post">
+
+  <label>Name
+    <input type="text" name="band[name]" value="<%= @band.name %>">
+  </label>
+
+  <% if method != :post %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="submit">
+</form>
+<%= button_to("Delete band", band_url(band), :method => :delete ) %>

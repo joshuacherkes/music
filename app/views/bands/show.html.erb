@@ -1,0 +1,15 @@
+<h1>About: <%= @band.name %></h1>
+
+<h2>Albums:</h2>
+<ul>
+<% @band.albums.each do |album| %>
+<li>
+  <%= album.name %>
+  <ul>
+  <% album.tracks.each do |track| %>
+  <li><%= "#{track.ord}: #{track.name}" %></li>
+  <% end %>
+</ul>
+</li>
+<% end %>
+</ul>

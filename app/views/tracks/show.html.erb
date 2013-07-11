@@ -1,0 +1,9 @@
+<h1><%= @track.name %> By <%= @track.band.name %> on <%= @track.album.name %> </h1>
+<h2>Lyrics:</h2>
+
+ <p><%= @track.lyrics %></p>
+
+<%= render @track.notes %>
+
+
+<%= button_to("add note", new_track_note_url(@track.id), :method => :get) %>

@@ -19,7 +19,8 @@ end
 bands.each_with_index do |name, index|
   Album.create({
     name: name,
-    band_id: (index + 1)
+    band_id: (index + 1),
+    env: "studio"
   })
 end
 

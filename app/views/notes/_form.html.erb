@@ -1,0 +1,27 @@
+<% action_url = (method == :post) ? track_notes_url : track_note_url(note.id) %>
+
+<form action="<%= action_url %>" method="post">
+  <h2><label for="body">Note Content:
+    <br>
+    <textarea id="body" name="note[body]" rows="5" cols="10">
+      <%= note.body%>
+    </textarea>
+  </label></h2>
+  <% if method != :post %>
+    <input type="hidden" name="_method" value="put">
+    <%= button_to("Delete Note", note_url(note), :method => :delete ) %>
+  <% end %>
+  <input type="hidden" name="note[track_id]" value="<%= params[:track_id] %>">
+
+  <input type="hidden" name="note[user_id]" value="<%=
+    User.find_by_token(session[:token])
+  %>">
+
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="submit">
+</form>
+
+

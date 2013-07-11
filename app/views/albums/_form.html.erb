@@ -1,0 +1,41 @@
+<% action_url = (method == :post) ? albums_url : album_url(album) %>
+
+<form action="<%= action_url %>" method="post">
+  <label for="name">Name
+    <input id="name" name="album[name]" type="text" value="<%= @album.name %>">
+  </label>
+
+  <label for="band_id">Band
+    <select id="band_id" name="album[band_id]" value="<%= @album.band.id %>">
+      <%Band.all.each do |band|%>
+        <option value="<%= band.id%>"> <%= band.name %> </option>
+      <% end %>
+    </select>
+  </label>
+
+  <input type="date" name="album[release]" value="<%= @album.release.to_s %>">
+  <label>
+    Recording Environment
+  </label>
+
+  <label>
+    <input type="radio" name="album[env]" value="live" <%= " checked" if @album.env == "live" %>>
+    Live
+  </label>
+
+  <label>
+    <input type="radio" name="album[env]" value="studio" <%= " checked" if @album.env == "studio" %>>
+    Studio
+  </label>
+
+  <% if method != :post %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="submit">
+</form>
+<%= button_to("Delete Album", album_url(album), :method => :delete ) %>

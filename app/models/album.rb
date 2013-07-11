@@ -1,8 +1,8 @@
 class Album < ActiveRecord::Base
-  attr_accessible :band_id, :name, :release
+  attr_accessible :band_id, :name, :release, :env
 
-  validates :band_id, :name, :release, :presence => true
-  has_many :tracks
-  belongs_to :band, :dependent => :destroy
+  validates :band_id, :name, :env, :presence => true
+  has_many :tracks, :dependent => :destroy
+  belongs_to :band
 
 end

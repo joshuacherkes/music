@@ -1,0 +1,19 @@
+<h1>About: <%= @album.name %></h1>
+
+
+
+<h3>Artist: <%=@album.band.name%> </h3>
+<h3>Release Date: <%=@album.release%> </h3>
+<h3>Recording Environment: <%=@album.env%> </h3>
+
+
+
+<h2>Tracks:</h2>
+<ul>
+  <% @album.tracks.each do |track| %>
+    <li><%= "#{track.ord}: #{track.name}" %></li>
+  <% end %>
+</ul>
+
+
+

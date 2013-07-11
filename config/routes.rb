@@ -12,6 +12,18 @@ Music::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources  :albums, :bands
+  resources :tracks do
+    resources :notes, :only => [:new, :create, :update, :show]
+  end
+
+  resources :users, :only => [:new, :create, :update, :show]
+  resources :sessions, :only => [:new, :create]
+  resources :users do
+    member do
+      get 'activate'
+    end
+  end
 
   # Sample resource route with options:
   #   resources :products do
@@ -24,6 +36,7 @@ Music::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+
 
   # Sample resource route with sub-resources:
   #   resources :products do

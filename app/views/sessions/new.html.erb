@@ -1,0 +1,21 @@
+<h1>Login<h2>
+
+<form action="<%= sessions_url %>" method="post">
+
+  <label>Email
+    <input type="text" name="user[email]" value="<%= @user.email %>">
+  </label>
+
+  <label>Password
+    <input type="password" name="user[password]" value="<%= @user.password %>">
+  </label>
+
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="submit">
+
+</form>
+
+<%= button_to("New User?", new_user_url, :method => :get ) %>
